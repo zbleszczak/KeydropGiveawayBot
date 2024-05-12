@@ -1,0 +1,30 @@
+from time import sleep
+from datetime import datetime
+import pyautogui
+
+giveawaycounter = 0
+
+
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+
+while True:
+    try:
+        pos = pyautogui.locateOnScreen('dolacz.png')
+        if pos != None:
+            pyautogui.click(pos[0], pos[1])
+            print("Ostatnia data dolaczenia do giveawayu: ")
+            print("Awaiting Next 2H invertal. Current time is - " + datetime.now().strftime("%H:%M:%S"))
+            pyautogui.click(pos[0], pos[1])
+            sleep(5)
+            pyautogui.click(589, 823)
+            sleep(80)
+            pyautogui.keyDown("browserback")
+            pyautogui.keyUp("browserback")
+            sleep(5)
+            pyautogui.keyDown("f5")
+            pyautogui.keyUp("f5")
+            giveawaycounter += 1
+            sleep(808)
+    except:
+        print("Nie znaleziono obrazu dolaczenia do giveawayu")
